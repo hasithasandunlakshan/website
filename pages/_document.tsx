@@ -24,8 +24,10 @@ class MyDocument extends Document {
                 (function() {
                   try {
                     var theme = localStorage.getItem('theme');
-                    var systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                    var shouldUseDark = theme === 'dark' || (!theme && systemPrefersDark);
+                    // Temporarily disabled system theme detection to default to light theme
+                    // var systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    // var shouldUseDark = theme === 'dark' || (!theme && systemPrefersDark);
+                    var shouldUseDark = theme === 'dark';
                     if (shouldUseDark) {
                       document.documentElement.classList.add('dark');
                     }
