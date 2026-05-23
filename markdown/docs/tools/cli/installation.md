@@ -214,4 +214,4 @@ ln -s <absolute-path>/bin/asyncapi /user/local/bin/asyncapi
 asyncapi
 ```
 > [!NOTE]
-> If youare using Alpine Linux or any musl-based distribution, make sure to download the `-alpine.tar.gz` version to avoid glibc compatibility issues. The regular `asyncapi.tar.gz` file is compiled for glibc-based systems and will not work on Alpine.
+> If you are using Alpine Linux or any musl-based distribution, make sure to download the `-alpine.tar.gz` version to avoid glibc compatibility issues. The regular `asyncapi.tar.gz` file is compiled for glibc-based systems and will not work on Alpine.

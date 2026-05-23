@@ -54,7 +54,7 @@ While framing the documentation, we must ensure that we are not including any vu
 Some examples include -
 - Using “simple” or “easy" instead of “no-brainer”.
 - Using "simple" or "straightforward" instead of "easy-peasy".
-- Avoid using any racist, sexist, or any discriminatory language like "stupid" or "retarted".
+- Avoid racist, sexist, ableist, or otherwise discriminatory language.
 - Use "easy" or "simple" instead of "piece of cake".
 - Using "excellent" or "impressive" instead of "dope"
 

@@ -4,7 +4,7 @@ weight: 200
 ---
 
 # Status: In Progress
-> Program participation annoucement can be found here https://github.com/orgs/asyncapi/discussions/556
+> Program participation announcement can be found here https://github.com/orgs/asyncapi/discussions/556
 
 ## Program Maintainers
 

@@ -22,7 +22,7 @@ If you are curious about our past achievements, [please read the previous Proje
 
 ## Slack
 
-We currently have a total of **6,124** members in the AsyncAPI workspace. Slack is our primary communication channel for sharing updates, assisting contributors and adopters who want to understand and use the AsyncAPI specification and toolings.
+We currently have a total of **6,124** members in the AsyncAPI workspace. Slack is our primary communication channel for sharing updates, assisting contributors and adopters who want to understand and use the AsyncAPI specification and tools.
 
 We welcomed **1,505** new members in 2024.
 

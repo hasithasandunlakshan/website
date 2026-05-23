@@ -44,7 +44,7 @@ We are making use of [New Relic API](https://docs.newrelic.com/docs/apis/intro-a
 
 Metrics won't be collected in CI environments, or when the "CI" env variable is set up to "true".
 
-The analytics config file will be store by default at your home directory. In case you prefer to change the file path then you should set the `ASYNCAPI_METRICS_CONFIG_PATH` env var to any specific path value when running any command. For instance:
+The analytics config file will be stored by default at your home directory. In case you prefer to change the file path then you should set the `ASYNCAPI_METRICS_CONFIG_PATH` env var to any specific path value when running any command. For instance:
 ````
 ASYNCAPI_METRICS_CONFIG_PATH=/tmp/.asyncapi-analytics asyncapi config analytics --status
 ````
