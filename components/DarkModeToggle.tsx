@@ -45,6 +45,11 @@ export default function DarkModeToggle() {
     const shouldUseDark = storedTheme === 'dark';
 
     document.documentElement.classList.toggle('dark', shouldUseDark);
+    if (shouldUseDark) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
     setIsDark(shouldUseDark);
   }, []);
 
@@ -52,6 +57,11 @@ export default function DarkModeToggle() {
     const newTheme = !isDark;
 
     document.documentElement.classList.toggle('dark', newTheme);
+    if (newTheme) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
     localStorage.setItem('theme', newTheme ? 'dark' : 'light');
     setIsDark(newTheme);
   };
