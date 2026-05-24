@@ -2,7 +2,9 @@ import BasePage from './BasePage';
 
 class CommunityPage extends BasePage {
   verifyPageLoaded() {
-    this.verifyHeadingExists('Welcome to the AsyncAPI Community');
+    cy.get('[data-testid="orbit-div"]')
+      .contains('h1', 'Welcome to the AsyncAPI Community')
+      .should('be.visible');
   }
 }
 
