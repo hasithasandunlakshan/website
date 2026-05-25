@@ -47,7 +47,7 @@ export default function DocsMobileMenu({ post, navigation, onClickClose = () => 
             </div>
             <div className='mb-4 mt-10 w-full px-2'>
               <SearchButton
-                className='flex w-full items-center space-x-3 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-left text-sm text-gray-700 shadow-sm transition-all duration-500 ease-in-out dark:border-dark-text dark:bg-dark-card dark:text-dark-text dark:hover:border-secondary-500 dark:hover:text-secondary-500 hover:border-secondary-500 hover:bg-secondary-100 hover:text-secondary-500'
+                className='flex w-full items-center space-x-3 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-left text-sm text-gray-700 shadow-sm transition-all duration-500 ease-in-out dark:border-dark-text dark:bg-dark-card dark:text-dark-text dark:hover:border-secondary-500 dark:hover:bg-dark-background dark:hover:text-secondary-500 hover:border-secondary-500 hover:bg-secondary-100 hover:text-secondary-500'
                 indexName={DOCS_INDEX_NAME}
               >
                 <IconLoupe />
