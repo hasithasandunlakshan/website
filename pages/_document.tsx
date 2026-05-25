@@ -30,7 +30,7 @@ class MyDocument extends Document {
                     var shouldUseDark = theme === 'dark';
                     if (shouldUseDark) {
                       document.documentElement.classList.add('dark');
-                      document.documentElement.setAttribute('data-theme', 'dark');
+                      document.documentElement.dataset.theme = 'dark';
                     }
                     document.documentElement.classList.add('transitions-enabled');
                   } catch (e) {}

@@ -46,9 +46,9 @@ export default function DarkModeToggle() {
 
     document.documentElement.classList.toggle('dark', shouldUseDark);
     if (shouldUseDark) {
-      document.documentElement.setAttribute('data-theme', 'dark');
+      document.documentElement.dataset.theme = 'dark';
     } else {
-      document.documentElement.removeAttribute('data-theme');
+      delete document.documentElement.dataset.theme;
     }
     setIsDark(shouldUseDark);
   }, []);
@@ -58,9 +58,9 @@ export default function DarkModeToggle() {
 
     document.documentElement.classList.toggle('dark', newTheme);
     if (newTheme) {
-      document.documentElement.setAttribute('data-theme', 'dark');
+      document.documentElement.dataset.theme = 'dark';
     } else {
-      document.documentElement.removeAttribute('data-theme');
+      delete document.documentElement.dataset.theme;
     }
     localStorage.setItem('theme', newTheme ? 'dark' : 'light');
     setIsDark(newTheme);
