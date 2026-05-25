@@ -41,38 +41,50 @@ import Sponsors from '../sponsors/PlatinumSponsors';
 import Warning from '../Warning';
 import { Table, TableBody, TableCell, TableHeader, TableRow, Thead } from './MDXTable';
 
-let mermaidInitialized = false;
+const mermaidThemeVariables = {
+  light: {
+    primaryColor: '#EDFAFF',
+    primaryBorderColor: '#47BCEE',
+    secondaryColor: '#F4EFFC',
+    secondaryBorderColor: '#875AE2',
+    fontFamily: 'Inter, sans-serif',
+    fontSize: '18px',
+    primaryTextColor: '#242929',
+    tertiaryColor: '#F7F9FA',
+    tertiaryBorderColor: '#BFC6C7',
+    lineColor: '#BFC6C7'
+  },
+  dark: {
+    primaryColor: '#131E35',
+    primaryBorderColor: '#47BCEE',
+    secondaryColor: '#121825',
+    secondaryBorderColor: '#875AE2',
+    fontFamily: 'Inter, sans-serif',
+    fontSize: '18px',
+    primaryTextColor: '#FFFFFF',
+    tertiaryColor: '#0F172A',
+    tertiaryBorderColor: '#1E293B',
+    lineColor: '#B8B9C0',
+    actorTextColor: '#FFFFFF',
+    signalTextColor: '#B8B9C0',
+    noteTextColor: '#FFFFFF',
+    noteBkgColor: '#131E35',
+    noteBorderColor: '#1E293B'
+  }
+};
 
 /**
  * @description Initializes the Mermaid library if not already initialized.
  */
-function initializeMermaid() {
-  if (mermaidInitialized) {
-    return;
-  }
-
-  mermaidInitialized = true;
+function initializeMermaid(isDark = false) {
   mermaid.initialize({
     startOnLoad: true,
     theme: 'base',
     securityLevel: 'loose',
     themeCSS: '',
-    themeVariables: {
-      primaryColor: '#EDFAFF',
-      primaryBorderColor: '#47BCEE',
-      secondaryColor: '#F4EFFC',
-      secondaryBorderColor: '#875AE2',
-      fontFamily: 'Inter, sans-serif',
-      fontSize: '18px',
-      primaryTextColor: '#242929',
-      tertiaryColor: '#F7F9FA',
-      tertiaryBorderColor: '#BFC6C7',
-      lineColor: '#BFC6C7'
-    }
+    themeVariables: isDark ? mermaidThemeVariables.dark : mermaidThemeVariables.light
   });
 }
-
-initializeMermaid();
 
 let currentId = 0;
 
@@ -104,6 +116,9 @@ function MermaidDiagram({ graph }: MermaidDiagramProps) {
     }
 
     try {
+      const isDark = document.documentElement.classList.contains('dark');
+
+      initializeMermaid(isDark);
       mermaid.mermaidAPI.render(uuid(), graph, (svgGraph) => {
         setSvg(svgGraph);
       });
