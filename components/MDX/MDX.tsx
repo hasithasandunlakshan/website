@@ -325,7 +325,7 @@ const getMDXComponents = (reactId: string) => ({
   table: (props: React.HTMLProps<HTMLTableElement>) => (
     <div className={`${props.className || ''} flex flex-col`}>
       <div className='my-2 overflow-x-auto py-2 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8'>
-        <div className='inline-block w-full overflow-auto border-b border-gray-200 align-middle shadow sm:rounded-lg'>
+        <div className='inline-block w-full overflow-auto border-b border-gray-200 align-middle shadow dark:border-border sm:rounded-lg'>
           <table {...props} className={`${props.className || ''} w-full`} />
         </div>
       </div>
@@ -334,16 +334,16 @@ const getMDXComponents = (reactId: string) => ({
   th: (props: React.HTMLProps<HTMLTableCellElement>) => (
     <th
       {...props}
-      className={`${props.className || ''} border-b border-gray-200 bg-gray-100 px-6 py-3 text-left font-body text-xs font-medium uppercase leading-4 tracking-wider text-gray-900`}
+      className={`${props.className || ''} border-b border-gray-200 bg-gray-100 px-6 py-3 text-left font-body text-xs font-medium uppercase leading-4 tracking-wider text-gray-900 dark:border-border dark:bg-dark-background dark:text-dark-heading`}
     />
   ),
   tr: (props: React.HTMLProps<HTMLTableRowElement>) => (
-    <tr {...props} className={`${props.className || ''} bg-white`} />
+    <tr {...props} className={`${props.className || ''} bg-white dark:bg-dark-card`} />
   ),
   td: (props: React.HTMLProps<HTMLTableCellElement>) => (
     <td
       {...props}
-      className={`${props.className || ''} border-b border-gray-200 px-6 py-4 text-sm leading-5 tracking-tight text-gray-700`}
+      className={`${props.className || ''} border-b border-gray-200 px-6 py-4 text-sm leading-5 tracking-tight text-gray-700 dark:border-border dark:text-dark-text`}
     />
   ),
   pre: (props: React.HTMLProps<HTMLPreElement>) => CodeComponent((props.children as React.ReactElement)?.props),
