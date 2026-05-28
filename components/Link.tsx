@@ -8,7 +8,6 @@ type LinkComponentProps = Readonly<{
   children: React.ReactNode;
   locale?: string;
   href?: string;
-  legacyBehavior?: boolean;
   target?: string;
   rel?: string;
 }>;
@@ -19,22 +18,14 @@ type LinkComponentProps = Readonly<{
  * @param {React.ReactNode} props.children - The content to render within the Link.
  * @param {string} [props.locale] - The locale for the link.
  * @param {string} [props.href] - The URL the link points to.
- * @param {boolean} [props.legacyBehavior=false] - Whether to use the legacy behavior for the link.
  */
-export default function LinkComponent({
-  children,
-  locale,
-  legacyBehavior = false,
-  target = '_self',
-  rel = '',
-  ...props
-}: LinkComponentProps) {
+export default function LinkComponent({ children, locale, target = '_self', rel = '', ...props }: LinkComponentProps) {
   const router = useRouter();
 
   // Render plain Link if no router (SSR / tests)
   if (!router) {
     return (
-      <Link href={props.href || ''} legacyBehavior={legacyBehavior} target={target} rel={rel}>
+      <Link href={props.href || ''} target={target} rel={rel}>
         {children}
       </Link>
     );
@@ -54,7 +45,8 @@ export default function LinkComponent({
   // External links or links not present in i18n map -> simple Link
   if (isExternal || (props.href && !hrefInI18n)) {
     return (
-      <Link href={originalHref} legacyBehavior={legacyBehavior} passHref target={target} rel={rel}>
+      <Link href={originalHref} target={target} rel={rel}>
+
         {children}
       </Link>
     );
@@ -80,21 +72,15 @@ export default function LinkComponent({
   href = href.replaceAll(/([^:/]|^)\/{2,}/g, '$1/');
 
   return (
-    <Link href={href} legacyBehavior={legacyBehavior} target={target} rel={rel} passHref>
+    <Link href={href} target={target} rel={rel}>
       {children}
     </Link>
   );
 }
 
-export const LinkText = ({
-  href,
-  children,
-  legacyBehavior = false,
-  target = '_self',
-  rel = ''
-}: LinkComponentProps) => {
+export const LinkText = ({ href, children, target = '_self', rel = '' }: LinkComponentProps) => {
   return (
-    <Link href={href || ''} target={target} rel={rel} legacyBehavior={legacyBehavior}>
+    <Link href={href || ''} target={target} rel={rel}>
       {children}
     </Link>
   );
