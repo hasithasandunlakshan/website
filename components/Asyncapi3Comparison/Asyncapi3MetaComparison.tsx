@@ -73,8 +73,9 @@ export default function Asyncapi3MetaComparison({ className = '' }: Asyncapi3Met
               >
                 <p>Tags</p>
               </div>
-              <div
-                className={`${hoverState.External ? 'bg-green-500 dark:bg-green-900/60' : ' '} m-2 flex flex-1 items-center justify-center border border-black p-2 dark:border-gray-600`}
+              <button
+                type='button'
+                className={`${hoverState.External ? 'bg-green-500 dark:bg-green-900/60' : ' '} m-2 flex flex-1 items-center justify-center border border-black p-2 dark:border-gray-600 focus:outline-none`}
                 onMouseOver={() =>
                   setHoverState((prevState) => ({
                     ...prevState,
@@ -101,7 +102,7 @@ export default function Asyncapi3MetaComparison({ className = '' }: Asyncapi3Met
                 }
               >
                 <p>External Docs</p>
-              </div>
+              </button>
             </div>
           </div>
         </div>

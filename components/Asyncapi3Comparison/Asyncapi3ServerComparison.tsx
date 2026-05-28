@@ -30,8 +30,9 @@ export default function Asyncapi3ServerComparison({ className = '' }: Asyncapi3S
               <div className='m-2 border border-blue-600 p-2 dark:border-blue-700'>
                 Server
                 <div className='flex flex-1 flex-wrap'>
-                  <div
-                    className={`${hoverState.Host || hoverState.Path ? 'bg-pink-300 dark:bg-pink-900/60' : ' '} m-2 flex flex-1 items-center justify-center border border-black p-2 dark:border-gray-600`}
+                  <button
+                    type='button'
+                    className={`${hoverState.Host || hoverState.Path ? 'bg-pink-300 dark:bg-pink-900/60' : ' '} m-2 flex flex-1 items-center justify-center border border-black p-2 dark:border-gray-600 focus:outline-none`}
                     onMouseOver={() =>
                       setHoverState((prevState) => ({
                         ...prevState,
@@ -62,7 +63,7 @@ export default function Asyncapi3ServerComparison({ className = '' }: Asyncapi3S
                     }
                   >
                     <p>Url</p>
-                  </div>
+                  </button>
                 </div>
               </div>
             </div>
@@ -78,8 +79,9 @@ export default function Asyncapi3ServerComparison({ className = '' }: Asyncapi3S
               <div className='m-2 border border-blue-600 p-2 dark:border-blue-700'>
                 Server
                 <div className='flex flex-1 flex-wrap'>
-                  <div
-                    className={`${hoverState.Host ? 'bg-pink-300 dark:bg-pink-900/60' : ' '} m-2 mr-1 box-border flex-1 border border-black p-2 dark:border-gray-600`}
+                  <button
+                    type='button'
+                    className={`${hoverState.Host ? 'bg-pink-300 dark:bg-pink-900/60' : ' '} m-2 mr-1 box-border flex-1 border border-black p-2 dark:border-gray-600 focus:outline-none`}
                     onMouseOver={() =>
                       setHoverState((prevState) => ({
                         ...prevState,
@@ -106,9 +108,10 @@ export default function Asyncapi3ServerComparison({ className = '' }: Asyncapi3S
                     }
                   >
                     <p>Host</p>
-                  </div>
-                  <div
-                    className={`${hoverState.Path ? 'bg-pink-300 dark:bg-pink-900/60' : ' '} m-2 mr-1 box-border flex-1 border border-black p-2 dark:border-gray-600`}
+                  </button>
+                  <button
+                    type='button'
+                    className={`${hoverState.Path ? 'bg-pink-300 dark:bg-pink-900/60' : ' '} m-2 mr-1 box-border flex-1 border border-black p-2 dark:border-gray-600 focus:outline-none`}
                     onMouseOver={() =>
                       setHoverState((prevState) => ({
                         ...prevState,
@@ -135,7 +138,7 @@ export default function Asyncapi3ServerComparison({ className = '' }: Asyncapi3S
                     }
                   >
                     <p>Pathname</p>
-                  </div>
+                  </button>
                 </div>
               </div>
             </div>

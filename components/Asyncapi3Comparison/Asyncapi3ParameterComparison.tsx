@@ -38,6 +38,7 @@ export default function Asyncapi3ParameterComparison({ className = '' }: Asyncap
         borderClass='border-orange-300 dark:border-orange-700'
         className='flex-1'
         useMouseOver
+        focusable
       />
       <HoverBox<HoverState>
         label='description'
@@ -48,6 +49,7 @@ export default function Asyncapi3ParameterComparison({ className = '' }: Asyncap
         borderClass='border-orange-300 dark:border-orange-700'
         className='flex-1'
         useMouseOver
+        focusable
       />
     </>
   );
@@ -78,6 +80,7 @@ export default function Asyncapi3ParameterComparison({ className = '' }: Asyncap
                           borderClass='border-orange-300 dark:border-orange-700'
                           className='flex-1'
                           useMouseOver
+                          focusable
                         />
                         <HoverBox<HoverState>
                           label='examples'
@@ -88,6 +91,7 @@ export default function Asyncapi3ParameterComparison({ className = '' }: Asyncap
                           borderClass='border-orange-300 dark:border-orange-700'
                           className='flex-1'
                           useMouseOver
+                          focusable
                         />
                         <HoverBox<HoverState>
                           label='default'
@@ -98,6 +102,7 @@ export default function Asyncapi3ParameterComparison({ className = '' }: Asyncap
                           borderClass='border-orange-300 dark:border-orange-700'
                           className='flex-1'
                           useMouseOver
+                          focusable
                         />
                         <HoverBox<HoverState>
                           label='description'
@@ -108,6 +113,7 @@ export default function Asyncapi3ParameterComparison({ className = '' }: Asyncap
                           borderClass='border-orange-300 dark:border-orange-700'
                           className='flex-1'
                           useMouseOver
+                          focusable
                         />
                         <div className='m-2 flex-1 bg-white p-2 dark:bg-gray-950'>pattern</div>
                         <div className='m-2 flex-1 bg-white p-2 dark:bg-gray-950'>multipleOf</div>
@@ -142,6 +148,7 @@ export default function Asyncapi3ParameterComparison({ className = '' }: Asyncap
                       borderClass='border-orange-300 dark:border-orange-700'
                       className='flex-1'
                       useMouseOver
+                      focusable
                     />
                     <HoverBox<HoverState>
                       label='examples'
@@ -152,6 +159,7 @@ export default function Asyncapi3ParameterComparison({ className = '' }: Asyncap
                       borderClass='border-orange-300 dark:border-orange-700'
                       className='flex-1'
                       useMouseOver
+                      focusable
                     />
                     <HoverBox<HoverState>
                       label='default'
@@ -162,6 +170,7 @@ export default function Asyncapi3ParameterComparison({ className = '' }: Asyncap
                       borderClass='border-orange-300 dark:border-orange-700'
                       className='flex-1'
                       useMouseOver
+                      focusable
                     />
                   </div>
                 </div>

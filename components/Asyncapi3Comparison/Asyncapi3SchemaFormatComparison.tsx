@@ -33,6 +33,7 @@ export default function Asyncapi3SchemaFormatComparison({ className = '' }: Asyn
       borderClass='border-orange-300 dark:border-orange-700'
       className='flex-1'
       useMouseOver
+      focusable
     />
   );
 
@@ -46,6 +47,7 @@ export default function Asyncapi3SchemaFormatComparison({ className = '' }: Asyn
       borderClass='border-orange-300 dark:border-orange-700'
       className='flex-1'
       useMouseOver
+      focusable
     />
   );
 
@@ -70,7 +72,6 @@ export default function Asyncapi3SchemaFormatComparison({ className = '' }: Asyn
                       activeClass='bg-yellow-300 dark:bg-yellow-800/60'
                       borderClass='border-yellow-600 dark:border-yellow-700'
                       className='flex-1'
-                      useMouseOver
                     >
                       <div className='flex flex-1 flex-wrap'>{renderSchema()}</div>
                     </HoverBox>
@@ -100,7 +101,6 @@ export default function Asyncapi3SchemaFormatComparison({ className = '' }: Asyn
                       activeClass='bg-yellow-300 dark:bg-yellow-800/60'
                       borderClass='border-yellow-600 dark:border-yellow-700'
                       className='flex-1'
-                      useMouseOver
                     >
                       <div className='flex flex-1 flex-wrap'>
                         {renderSchemaFormat()}

@@ -26,6 +26,7 @@ interface HoverBoxProps<T> {
   useMouseOver?: boolean;
   children?: React.ReactNode;
   className?: string;
+  focusable?: boolean;
 }
 
 /**
@@ -41,7 +42,8 @@ export function HoverBox<T>({
   borderClass,
   useMouseOver = false,
   children,
-  className = ''
+  className = '',
+  focusable = false
 }: Readonly<HoverBoxProps<T>>) {
   const hovered = hoverState[fieldKey];
   const setHover = (val: boolean) => setHoverState((prev) => ({ ...prev, [fieldKey]: val }));
@@ -50,11 +52,24 @@ export function HoverBox<T>({
     ? { onMouseOver: () => setHover(true), onMouseLeave: () => setHover(false) }
     : { onMouseEnter: () => setHover(true), onMouseLeave: () => setHover(false) };
 
+  if (focusable) {
+    return (
+      <button
+        type='button'
+        className={`${hovered ? activeClass : defaultClass} m-2 border ${borderClass} p-2 focus:outline-none text-left block w-full ${className}`}
+        onFocus={() => setHover(true)}
+        onBlur={() => setHover(false)}
+        {...hoverProps}
+      >
+        {label}
+        {children}
+      </button>
+    );
+  }
+
   return (
     <div
       className={`${hovered ? activeClass : defaultClass} m-2 border ${borderClass} p-2 ${className}`}
-      onFocus={() => setHover(true)}
-      onBlur={() => setHover(false)}
       {...hoverProps}
     >
       {label}
