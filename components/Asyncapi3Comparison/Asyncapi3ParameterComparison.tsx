@@ -14,6 +14,11 @@ export interface HoverState {
   default: boolean;
 }
 
+interface ParameterHoverBoxProps {
+  label: string;
+  fieldKey: keyof HoverState;
+}
+
 /**
  * @description React component for comparing AsyncAPI parameters between versions 2.x and 3.0.
  * @param {string} [props.className=''] - Additional CSS classes for styling.
@@ -27,30 +32,24 @@ export default function Asyncapi3ParameterComparison({ className = '' }: Asyncap
     default: false
   });
 
+  const ParameterHoverBox = ({ label, fieldKey }: ParameterHoverBoxProps) => (
+    <HoverBox<HoverState>
+      label={label}
+      fieldKey={fieldKey}
+      hoverState={hoverState}
+      setHoverState={setHoverState}
+      activeClass='bg-orange-300 dark:bg-orange-900/60'
+      borderClass='border-orange-300 dark:border-orange-700'
+      className='flex-1'
+      useMouseOver
+      focusable
+    />
+  );
+
   const renderFields = () => (
     <>
-      <HoverBox<HoverState>
-        label='location'
-        fieldKey='location'
-        hoverState={hoverState}
-        setHoverState={setHoverState}
-        activeClass='bg-orange-300 dark:bg-orange-900/60'
-        borderClass='border-orange-300 dark:border-orange-700'
-        className='flex-1'
-        useMouseOver
-        focusable
-      />
-      <HoverBox<HoverState>
-        label='description'
-        fieldKey='description'
-        hoverState={hoverState}
-        setHoverState={setHoverState}
-        activeClass='bg-orange-300 dark:bg-orange-900/60'
-        borderClass='border-orange-300 dark:border-orange-700'
-        className='flex-1'
-        useMouseOver
-        focusable
-      />
+      <ParameterHoverBox label='location' fieldKey='location' />
+      <ParameterHoverBox label='description' fieldKey='description' />
     </>
   );
 
@@ -71,50 +70,10 @@ export default function Asyncapi3ParameterComparison({ className = '' }: Asyncap
                       schema
                       <div className='flex flex-1 flex-wrap'>
                         <div className='m-2 flex-1 bg-white p-2 dark:bg-gray-950'>type</div>
-                        <HoverBox<HoverState>
-                          label='enum'
-                          fieldKey='enum'
-                          hoverState={hoverState}
-                          setHoverState={setHoverState}
-                          activeClass='bg-orange-300 dark:bg-orange-900/60'
-                          borderClass='border-orange-300 dark:border-orange-700'
-                          className='flex-1'
-                          useMouseOver
-                          focusable
-                        />
-                        <HoverBox<HoverState>
-                          label='examples'
-                          fieldKey='examples'
-                          hoverState={hoverState}
-                          setHoverState={setHoverState}
-                          activeClass='bg-orange-300 dark:bg-orange-900/60'
-                          borderClass='border-orange-300 dark:border-orange-700'
-                          className='flex-1'
-                          useMouseOver
-                          focusable
-                        />
-                        <HoverBox<HoverState>
-                          label='default'
-                          fieldKey='default'
-                          hoverState={hoverState}
-                          setHoverState={setHoverState}
-                          activeClass='bg-orange-300 dark:bg-orange-900/60'
-                          borderClass='border-orange-300 dark:border-orange-700'
-                          className='flex-1'
-                          useMouseOver
-                          focusable
-                        />
-                        <HoverBox<HoverState>
-                          label='description'
-                          fieldKey='description'
-                          hoverState={hoverState}
-                          setHoverState={setHoverState}
-                          activeClass='bg-orange-300 dark:bg-orange-900/60'
-                          borderClass='border-orange-300 dark:border-orange-700'
-                          className='flex-1'
-                          useMouseOver
-                          focusable
-                        />
+                        <ParameterHoverBox label='enum' fieldKey='enum' />
+                        <ParameterHoverBox label='examples' fieldKey='examples' />
+                        <ParameterHoverBox label='default' fieldKey='default' />
+                        <ParameterHoverBox label='description' fieldKey='description' />
                         <div className='m-2 flex-1 bg-white p-2 dark:bg-gray-950'>pattern</div>
                         <div className='m-2 flex-1 bg-white p-2 dark:bg-gray-950'>multipleOf</div>
                         <div className='m-2 flex-1 bg-white p-2 dark:bg-gray-950'>And all other properties</div>
@@ -139,39 +98,9 @@ export default function Asyncapi3ParameterComparison({ className = '' }: Asyncap
                   parameter
                   <div className='flex flex-1 flex-wrap'>
                     {renderFields()}
-                    <HoverBox<HoverState>
-                      label='enum'
-                      fieldKey='enum'
-                      hoverState={hoverState}
-                      setHoverState={setHoverState}
-                      activeClass='bg-orange-300 dark:bg-orange-900/60'
-                      borderClass='border-orange-300 dark:border-orange-700'
-                      className='flex-1'
-                      useMouseOver
-                      focusable
-                    />
-                    <HoverBox<HoverState>
-                      label='examples'
-                      fieldKey='examples'
-                      hoverState={hoverState}
-                      setHoverState={setHoverState}
-                      activeClass='bg-orange-300 dark:bg-orange-900/60'
-                      borderClass='border-orange-300 dark:border-orange-700'
-                      className='flex-1'
-                      useMouseOver
-                      focusable
-                    />
-                    <HoverBox<HoverState>
-                      label='default'
-                      fieldKey='default'
-                      hoverState={hoverState}
-                      setHoverState={setHoverState}
-                      activeClass='bg-orange-300 dark:bg-orange-900/60'
-                      borderClass='border-orange-300 dark:border-orange-700'
-                      className='flex-1'
-                      useMouseOver
-                      focusable
-                    />
+                    <ParameterHoverBox label='enum' fieldKey='enum' />
+                    <ParameterHoverBox label='examples' fieldKey='examples' />
+                    <ParameterHoverBox label='default' fieldKey='default' />
                   </div>
                 </div>
               </div>
