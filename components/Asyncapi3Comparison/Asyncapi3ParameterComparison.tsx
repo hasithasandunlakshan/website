@@ -17,7 +17,23 @@ export interface HoverState {
 interface ParameterHoverBoxProps {
   label: string;
   fieldKey: keyof HoverState;
+  hoverState: HoverState;
+  setHoverState: React.Dispatch<React.SetStateAction<HoverState>>;
 }
+
+const ParameterHoverBox = ({ label, fieldKey, hoverState, setHoverState }: ParameterHoverBoxProps) => (
+  <HoverBox<HoverState>
+    label={label}
+    fieldKey={fieldKey}
+    hoverState={hoverState}
+    setHoverState={setHoverState}
+    activeClass='bg-orange-300 dark:bg-orange-900/60'
+    borderClass='border-orange-300 dark:border-orange-700'
+    className='flex-1'
+    useMouseOver
+    focusable
+  />
+);
 
 /**
  * @description React component for comparing AsyncAPI parameters between versions 2.x and 3.0.
@@ -32,24 +48,15 @@ export default function Asyncapi3ParameterComparison({ className = '' }: Asyncap
     default: false
   });
 
-  const ParameterHoverBox = ({ label, fieldKey }: ParameterHoverBoxProps) => (
-    <HoverBox<HoverState>
-      label={label}
-      fieldKey={fieldKey}
-      hoverState={hoverState}
-      setHoverState={setHoverState}
-      activeClass='bg-orange-300 dark:bg-orange-900/60'
-      borderClass='border-orange-300 dark:border-orange-700'
-      className='flex-1'
-      useMouseOver
-      focusable
-    />
-  );
-
   const renderFields = () => (
     <>
-      <ParameterHoverBox label='location' fieldKey='location' />
-      <ParameterHoverBox label='description' fieldKey='description' />
+      <ParameterHoverBox label='location' fieldKey='location' hoverState={hoverState} setHoverState={setHoverState} />
+      <ParameterHoverBox
+        label='description'
+        fieldKey='description'
+        hoverState={hoverState}
+        setHoverState={setHoverState}
+      />
     </>
   );
 
@@ -70,10 +77,30 @@ export default function Asyncapi3ParameterComparison({ className = '' }: Asyncap
                       schema
                       <div className='flex flex-1 flex-wrap'>
                         <div className='m-2 flex-1 bg-white p-2 dark:bg-gray-950'>type</div>
-                        <ParameterHoverBox label='enum' fieldKey='enum' />
-                        <ParameterHoverBox label='examples' fieldKey='examples' />
-                        <ParameterHoverBox label='default' fieldKey='default' />
-                        <ParameterHoverBox label='description' fieldKey='description' />
+                        <ParameterHoverBox
+                          label='enum'
+                          fieldKey='enum'
+                          hoverState={hoverState}
+                          setHoverState={setHoverState}
+                        />
+                        <ParameterHoverBox
+                          label='examples'
+                          fieldKey='examples'
+                          hoverState={hoverState}
+                          setHoverState={setHoverState}
+                        />
+                        <ParameterHoverBox
+                          label='default'
+                          fieldKey='default'
+                          hoverState={hoverState}
+                          setHoverState={setHoverState}
+                        />
+                        <ParameterHoverBox
+                          label='description'
+                          fieldKey='description'
+                          hoverState={hoverState}
+                          setHoverState={setHoverState}
+                        />
                         <div className='m-2 flex-1 bg-white p-2 dark:bg-gray-950'>pattern</div>
                         <div className='m-2 flex-1 bg-white p-2 dark:bg-gray-950'>multipleOf</div>
                         <div className='m-2 flex-1 bg-white p-2 dark:bg-gray-950'>And all other properties</div>
@@ -98,9 +125,24 @@ export default function Asyncapi3ParameterComparison({ className = '' }: Asyncap
                   parameter
                   <div className='flex flex-1 flex-wrap'>
                     {renderFields()}
-                    <ParameterHoverBox label='enum' fieldKey='enum' />
-                    <ParameterHoverBox label='examples' fieldKey='examples' />
-                    <ParameterHoverBox label='default' fieldKey='default' />
+                    <ParameterHoverBox
+                      label='enum'
+                      fieldKey='enum'
+                      hoverState={hoverState}
+                      setHoverState={setHoverState}
+                    />
+                    <ParameterHoverBox
+                      label='examples'
+                      fieldKey='examples'
+                      hoverState={hoverState}
+                      setHoverState={setHoverState}
+                    />
+                    <ParameterHoverBox
+                      label='default'
+                      fieldKey='default'
+                      hoverState={hoverState}
+                      setHoverState={setHoverState}
+                    />
                   </div>
                 </div>
               </div>
