@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Column, HoverBox } from './ComparisonCommon';
+import { Column, HoverBox } from '../ComparisonCommon';
 
 export interface HoverState {
   Paths: boolean;

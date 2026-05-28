@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Column } from './ComparisonCommon';
+import { Column } from '../ComparisonCommon';
 
 export interface Asyncapi3ServerComparisonProps {
   className?: string;

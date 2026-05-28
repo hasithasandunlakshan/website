@@ -27,6 +27,7 @@ interface HoverBoxProps<T extends { [K in keyof T]: boolean }> {
   children?: React.ReactNode;
   className?: string;
   focusable?: boolean;
+  testId?: string;
 }
 
 /**
@@ -43,7 +44,8 @@ export function HoverBox<T extends { [K in keyof T]: boolean }>({
   useMouseOver = false,
   children,
   className = '',
-  focusable = false
+  focusable = false,
+  testId
 }: Readonly<HoverBoxProps<T>>) {
   const hovered = hoverState[fieldKey];
   const setHover = (val: boolean) => setHoverState((prev) => ({ ...prev, [fieldKey]: val }));
@@ -59,6 +61,7 @@ export function HoverBox<T extends { [K in keyof T]: boolean }>({
         className={`${hovered ? activeClass : defaultClass} m-2 border ${borderClass} p-2 focus:outline-none text-left block w-full ${className}`}
         onFocus={() => setHover(true)}
         onBlur={() => setHover(false)}
+        data-testid={testId}
         {...hoverProps}
       >
         {label}
@@ -70,6 +73,7 @@ export function HoverBox<T extends { [K in keyof T]: boolean }>({
   return (
     <div
       className={`${hovered ? activeClass : defaultClass} m-2 border ${borderClass} p-2 ${className}`}
+      data-testid={testId}
       {...hoverProps}
     >
       {label}
