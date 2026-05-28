@@ -101,7 +101,7 @@ function initializeMermaid(theme: MermaidTheme) {
   mermaid.initialize({
     startOnLoad: false,
     theme: 'base',
-    securityLevel: 'loose',
+    securityLevel: 'strict',
     themeCSS: '',
     themeVariables: MERMAID_THEME_VARIABLES[theme]
   });
