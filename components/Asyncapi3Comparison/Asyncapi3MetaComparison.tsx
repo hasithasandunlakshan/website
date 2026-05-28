@@ -75,6 +75,7 @@ export default function Asyncapi3MetaComparison({ className = '' }: Asyncapi3Met
               </div>
               <div
                 className={`${hoverState.External ? 'bg-green-500 dark:bg-green-900/60' : ' '} m-2 flex flex-1 items-center justify-center border border-black p-2 dark:border-gray-600`}
+                tabIndex={0}
                 onMouseOver={() =>
                   setHoverState((prevState) => ({
                     ...prevState,
@@ -82,6 +83,18 @@ export default function Asyncapi3MetaComparison({ className = '' }: Asyncapi3Met
                   }))
                 }
                 onMouseLeave={() =>
+                  setHoverState((prevState) => ({
+                    ...prevState,
+                    External: false
+                  }))
+                }
+                onFocus={() =>
+                  setHoverState((prevState) => ({
+                    ...prevState,
+                    External: true
+                  }))
+                }
+                onBlur={() =>
                   setHoverState((prevState) => ({
                     ...prevState,
                     External: false
