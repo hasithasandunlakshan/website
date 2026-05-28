@@ -42,7 +42,7 @@ export function HoverBox<T>({
   useMouseOver = false,
   children,
   className = ''
-}: HoverBoxProps<T>) {
+}: Readonly<HoverBoxProps<T>>) {
   const hovered = hoverState[fieldKey];
   const setHover = (val: boolean) => setHoverState((prev) => ({ ...prev, [fieldKey]: val }));
 
@@ -53,7 +53,6 @@ export function HoverBox<T>({
   return (
     <div
       className={`${hovered ? activeClass : defaultClass} m-2 border ${borderClass} p-2 ${className}`}
-      tabIndex={0}
       onFocus={() => setHover(true)}
       onBlur={() => setHover(false)}
       {...hoverProps}

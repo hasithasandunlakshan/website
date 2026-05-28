@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { Column, HoverBox } from './ComparisonCommon';
 
 export interface HoverState {
@@ -22,45 +23,45 @@ export default function Asyncapi3IdAndAddressComparison({ className = '' }: Asyn
 
   return (
     <div className={`${className} flex flex-col flex-wrap gap-1 text-center md:flex-row`}>
-      <Column title="AsyncAPI 2.x">
+      <Column title='AsyncAPI 2.x'>
         <HoverBox<HoverState>
-          label="Channels"
-          fieldKey="Paths"
+          label='Channels'
+          fieldKey='Paths'
           hoverState={hoverState}
           setHoverState={setHoverState}
-          activeClass="bg-yellow-100 dark:bg-yellow-900/40"
-          defaultClass=" "
-          borderClass="border-yellow-300 dark:border-yellow-700"
+          activeClass='bg-yellow-100 dark:bg-yellow-900/40'
+          defaultClass=' '
+          borderClass='border-yellow-300 dark:border-yellow-700'
         >
           <HoverBox<HoverState>
-            label="Channel Item"
-            fieldKey="PathItem"
+            label='Channel Item'
+            fieldKey='PathItem'
             hoverState={hoverState}
             setHoverState={setHoverState}
-            activeClass="bg-yellow-300 dark:bg-yellow-800/60"
-            borderClass="border-yellow-600 dark:border-yellow-700"
+            activeClass='bg-yellow-300 dark:bg-yellow-800/60'
+            borderClass='border-yellow-600 dark:border-yellow-700'
             useMouseOver
           />
         </HoverBox>
       </Column>
 
-      <Column title="AsyncAPI 3.0">
+      <Column title='AsyncAPI 3.0'>
         <HoverBox<HoverState>
-          label="Channels"
-          fieldKey="Paths"
+          label='Channels'
+          fieldKey='Paths'
           hoverState={hoverState}
           setHoverState={setHoverState}
-          activeClass="bg-yellow-100 dark:bg-yellow-900/40"
-          defaultClass=" "
-          borderClass="border-yellow-300 dark:border-yellow-700"
+          activeClass='bg-yellow-100 dark:bg-yellow-900/40'
+          defaultClass=' '
+          borderClass='border-yellow-300 dark:border-yellow-700'
         >
           <HoverBox<HoverState>
-            label="Channel"
-            fieldKey="PathItem"
+            label='Channel'
+            fieldKey='PathItem'
             hoverState={hoverState}
             setHoverState={setHoverState}
-            activeClass="bg-yellow-300 dark:bg-yellow-800/60"
-            borderClass="border-yellow-600 dark:border-yellow-700"
+            activeClass='bg-yellow-300 dark:bg-yellow-800/60'
+            borderClass='border-yellow-600 dark:border-yellow-700'
             useMouseOver
           >
             <div className='flex flex-1 flex-col flex-wrap'>

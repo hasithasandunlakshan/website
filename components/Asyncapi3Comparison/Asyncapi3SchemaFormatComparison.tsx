@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { Column, HoverBox } from './ComparisonCommon';
 
 export interface Asyncapi3SchemaFormatComparisonProps {
@@ -24,33 +25,33 @@ export default function Asyncapi3SchemaFormatComparison({ className = '' }: Asyn
 
   const renderSchemaFormat = () => (
     <HoverBox<HoverState>
-      label="schemaFormat"
-      fieldKey="SchemaFormat"
+      label='schemaFormat'
+      fieldKey='SchemaFormat'
       hoverState={hoverState}
       setHoverState={setHoverState}
-      activeClass="bg-orange-100 dark:bg-orange-900/40"
-      borderClass="border-orange-300 dark:border-orange-700"
-      className="flex-1"
+      activeClass='bg-orange-100 dark:bg-orange-900/40'
+      borderClass='border-orange-300 dark:border-orange-700'
+      className='flex-1'
       useMouseOver
     />
   );
 
   const renderSchema = () => (
     <HoverBox<HoverState>
-      label="schema"
-      fieldKey="Schema"
+      label='schema'
+      fieldKey='Schema'
       hoverState={hoverState}
       setHoverState={setHoverState}
-      activeClass="bg-blue-300 dark:bg-blue-900/60"
-      borderClass="border-orange-300 dark:border-orange-700"
-      className="flex-1"
+      activeClass='bg-blue-300 dark:bg-blue-900/60'
+      borderClass='border-orange-300 dark:border-orange-700'
+      className='flex-1'
       useMouseOver
     />
   );
 
   return (
     <div className={`${className} flex flex-col flex-wrap gap-1 text-center md:flex-row`}>
-      <Column title="AsyncAPI 2.x">
+      <Column title='AsyncAPI 2.x'>
         <div className='m-2 border border-yellow-300 p-2 dark:border-yellow-700'>
           components | channels
           <div className='flex flex-1 flex-wrap'>
@@ -62,18 +63,16 @@ export default function Asyncapi3SchemaFormatComparison({ className = '' }: Asyn
                   <div className='flex flex-1 flex-wrap'>
                     {renderSchemaFormat()}
                     <HoverBox<HoverState>
-                      label="payload"
-                      fieldKey="Payload"
+                      label='payload'
+                      fieldKey='Payload'
                       hoverState={hoverState}
                       setHoverState={setHoverState}
-                      activeClass="bg-yellow-300 dark:bg-yellow-800/60"
-                      borderClass="border-yellow-600 dark:border-yellow-700"
-                      className="flex-1"
+                      activeClass='bg-yellow-300 dark:bg-yellow-800/60'
+                      borderClass='border-yellow-600 dark:border-yellow-700'
+                      className='flex-1'
                       useMouseOver
                     >
-                      <div className='flex flex-1 flex-wrap'>
-                        {renderSchema()}
-                      </div>
+                      <div className='flex flex-1 flex-wrap'>{renderSchema()}</div>
                     </HoverBox>
                   </div>
                 </div>
@@ -83,7 +82,7 @@ export default function Asyncapi3SchemaFormatComparison({ className = '' }: Asyn
         </div>
       </Column>
 
-      <Column title="AsyncAPI 3.0">
+      <Column title='AsyncAPI 3.0'>
         <div className='m-2 border border-yellow-300 p-2 dark:border-yellow-700'>
           components | channels
           <div className='flex flex-1 flex-wrap'>
@@ -94,13 +93,13 @@ export default function Asyncapi3SchemaFormatComparison({ className = '' }: Asyn
                   message
                   <div className='flex flex-1 flex-wrap'>
                     <HoverBox<HoverState>
-                      label="payload"
-                      fieldKey="Payload"
+                      label='payload'
+                      fieldKey='Payload'
                       hoverState={hoverState}
                       setHoverState={setHoverState}
-                      activeClass="bg-yellow-300 dark:bg-yellow-800/60"
-                      borderClass="border-yellow-600 dark:border-yellow-700"
-                      className="flex-1"
+                      activeClass='bg-yellow-300 dark:bg-yellow-800/60'
+                      borderClass='border-yellow-600 dark:border-yellow-700'
+                      className='flex-1'
                       useMouseOver
                     >
                       <div className='flex flex-1 flex-wrap'>
