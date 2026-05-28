@@ -15,7 +15,7 @@ export const Column = ({ title, children }: ColumnProps) => (
   </div>
 );
 
-interface HoverBoxProps<T> {
+interface HoverBoxProps<T extends { [K in keyof T]: boolean }> {
   label: string | React.ReactNode;
   fieldKey: keyof T;
   hoverState: T;
@@ -32,7 +32,7 @@ interface HoverBoxProps<T> {
 /**
  * Reusable wrapper that manages hover states, hover event handlers, and styling dynamically.
  */
-export function HoverBox<T>({
+export function HoverBox<T extends { [K in keyof T]: boolean }>({
   label,
   fieldKey,
   hoverState,
