@@ -25,7 +25,7 @@ export const SpecInfoSection = <T extends BaseHoverState & { [K in keyof T]: boo
 }: SharedSectionProps<T>) => (
   <HoverBox<T>
     label='Info'
-    fieldKey={'Info' as keyof T}
+    fieldKey='Info'
     hoverState={hoverState}
     setHoverState={setHoverState}
     activeClass='bg-blue-100 dark:bg-blue-900/40'
@@ -46,7 +46,7 @@ export const TagsAndExternalDocsSection = <T extends BaseHoverState & { [K in ke
   <div className='flex flex-1 flex-wrap'>
     <HoverBox<T>
       label='Tags'
-      fieldKey={'Tags' as keyof T}
+      fieldKey='Tags'
       hoverState={hoverState}
       setHoverState={setHoverState}
       activeClass='bg-pink-300 dark:bg-pink-900/60'
@@ -57,7 +57,7 @@ export const TagsAndExternalDocsSection = <T extends BaseHoverState & { [K in ke
     />
     <HoverBox<T>
       label='External Docs'
-      fieldKey={'External' as keyof T}
+      fieldKey='External'
       hoverState={hoverState}
       setHoverState={setHoverState}
       activeClass='bg-green-500 dark:bg-green-900/60'
@@ -86,7 +86,7 @@ export const SpecComponentsSection = <T extends BaseHoverState & { [K in keyof T
 }: SpecComponentsSectionProps<T>) => (
   <HoverBox<T>
     label='Components'
-    fieldKey={'Components' as keyof T}
+    fieldKey='Components'
     hoverState={hoverState}
     setHoverState={setHoverState}
     activeClass='bg-gray-100 dark:bg-gray-800'
@@ -110,7 +110,7 @@ export const OpenAPIServersSection = <T extends BaseHoverState & { [K in keyof T
   <div className='flex flex-1 flex-wrap'>
     <HoverBox<T>
       label='Servers'
-      fieldKey={'Servers' as keyof T}
+      fieldKey='Servers'
       hoverState={hoverState}
       setHoverState={setHoverState}
       activeClass='bg-green-100 dark:bg-green-900/40'
@@ -134,7 +134,7 @@ export const AsyncAPIServersSection = <T extends BaseHoverState & { [K in keyof 
   <div className='flex flex-1 flex-wrap'>
     <HoverBox<T>
       label='Servers (hosts + security)'
-      fieldKey={'Servers' as keyof T}
+      fieldKey='Servers'
       hoverState={hoverState}
       setHoverState={setHoverState}
       activeClass='bg-green-100 dark:bg-green-900/40'
