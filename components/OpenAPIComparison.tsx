@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 
 import { Column, ComparisonBox, HoverBox } from './ComparisonCommon';
-import { AsyncAPIServersSection, OpenAPIServersSection, SpecComponentsSection, SpecInfoSection, TagsAndExternalDocsSection } from './OpenAPIComparisonCommon';
+import {
+  AsyncAPIServersSection,
+  OpenAPIServersSection,
+  SpecComponentsSection,
+  SpecInfoSection,
+  TagsAndExternalDocsSection
+} from './OpenAPIComparisonCommon';
 
 interface HoverState {
   Info: boolean;
@@ -21,7 +27,7 @@ interface OpenAPIComparisonProps {
 }
 
 /** Component entries shown inside the OpenAPI 3.0 Components section. */
-const OPENAPI_V2_COMPONENT_NAMES = [
+const OPENAPI_COMPONENT_NAMES = [
   'Schemas',
   'Responses',
   'Parameters',
@@ -34,7 +40,7 @@ const OPENAPI_V2_COMPONENT_NAMES = [
 ];
 
 /** Component entries shown inside the AsyncAPI 2.0 Components section. */
-const ASYNCAPI_V2_COMPONENT_NAMES = [
+const ASYNCAPI_COMPONENT_NAMES = [
   'Schemas',
   'Messages',
   'Security Schemes',
@@ -70,18 +76,14 @@ export default function OpenAPIComparison({ className = '' }: OpenAPIComparisonP
     <div className={`${className} flex flex-col flex-wrap gap-1 text-center md:flex-row`}>
       <Column title='OpenAPI 3.0'>
         <SpecInfoSection hoverState={hoverState} setHoverState={setHoverState} />
-        <OpenAPIServersSection
-          hoverState={hoverState}
-          setHoverState={setHoverState}
-          testId='OpenAPI-sec-servers'
-        />
+        <OpenAPIServersSection hoverState={hoverState} setHoverState={setHoverState} testId='OpenAPI-sec-servers' />
         <HoverBox<HoverState>
           label='Paths'
           fieldKey='Paths'
           hoverState={hoverState}
           setHoverState={setHoverState}
           activeClass='bg-yellow-100 dark:bg-yellow-900/40'
-          defaultClass=' '
+          defaultClass=''
           borderClass='border-yellow-300 dark:border-yellow-700'
           testId='OpenAPI-paths'
         >
@@ -148,7 +150,7 @@ export default function OpenAPIComparison({ className = '' }: OpenAPIComparisonP
         <SpecComponentsSection
           hoverState={hoverState}
           setHoverState={setHoverState}
-          componentNames={OPENAPI_V2_COMPONENT_NAMES}
+          componentNames={OPENAPI_COMPONENT_NAMES}
         />
       </Column>
 
@@ -161,7 +163,7 @@ export default function OpenAPIComparison({ className = '' }: OpenAPIComparisonP
           hoverState={hoverState}
           setHoverState={setHoverState}
           activeClass='bg-yellow-100 dark:bg-yellow-900/40'
-          defaultClass=' '
+          defaultClass=''
           borderClass='border-yellow-300 dark:border-yellow-700'
         >
           <div className='flex flex-1 flex-wrap'>
@@ -226,7 +228,7 @@ export default function OpenAPIComparison({ className = '' }: OpenAPIComparisonP
         <SpecComponentsSection
           hoverState={hoverState}
           setHoverState={setHoverState}
-          componentNames={ASYNCAPI_V2_COMPONENT_NAMES}
+          componentNames={ASYNCAPI_COMPONENT_NAMES}
         />
       </Column>
     </div>

@@ -29,7 +29,7 @@ export const SpecInfoSection = <T extends BaseHoverState & { [K in keyof T]: boo
     hoverState={hoverState}
     setHoverState={setHoverState}
     activeClass='bg-blue-100 dark:bg-blue-900/40'
-    defaultClass=' '
+    defaultClass=''
     borderClass='border-blue-300 dark:border-blue-700'
     useMouseOver
   />
@@ -50,7 +50,7 @@ export const TagsAndExternalDocsSection = <T extends BaseHoverState & { [K in ke
       hoverState={hoverState}
       setHoverState={setHoverState}
       activeClass='bg-pink-300 dark:bg-pink-900/60'
-      defaultClass=' '
+      defaultClass=''
       borderClass='border-black dark:border-gray-600'
       className='flex flex-1 items-center justify-center'
       useMouseOver
@@ -61,7 +61,7 @@ export const TagsAndExternalDocsSection = <T extends BaseHoverState & { [K in ke
       hoverState={hoverState}
       setHoverState={setHoverState}
       activeClass='bg-green-500 dark:bg-green-900/60'
-      defaultClass=' '
+      defaultClass=''
       borderClass='border-black dark:border-gray-600'
       className='flex flex-1 items-center justify-center'
       useMouseOver
@@ -69,9 +69,10 @@ export const TagsAndExternalDocsSection = <T extends BaseHoverState & { [K in ke
   </div>
 );
 
-export interface SpecComponentsSectionProps<T extends BaseHoverState & { [K in keyof T]: boolean }>
-  extends SharedSectionProps<T> {
-  /** List of component names to display in the two-column grid. */
+export interface SpecComponentsSectionProps<
+  T extends BaseHoverState & { [K in keyof T]: boolean }
+> extends SharedSectionProps<T> {
+  // List of component names to display in the two-column grid.
   componentNames: string[];
 }
 
@@ -90,7 +91,7 @@ export const SpecComponentsSection = <T extends BaseHoverState & { [K in keyof T
     hoverState={hoverState}
     setHoverState={setHoverState}
     activeClass='bg-gray-100 dark:bg-gray-800'
-    defaultClass=' '
+    defaultClass=''
     borderClass='border-black dark:border-gray-600'
     className='flex-1'
     useMouseOver
@@ -114,7 +115,7 @@ export const OpenAPIServersSection = <T extends BaseHoverState & { [K in keyof T
       hoverState={hoverState}
       setHoverState={setHoverState}
       activeClass='bg-green-100 dark:bg-green-900/40'
-      defaultClass=' '
+      defaultClass=''
       borderClass='border-green-300 dark:border-green-700'
       className='flex-1'
       testId={testId}
@@ -138,7 +139,7 @@ export const AsyncAPIServersSection = <T extends BaseHoverState & { [K in keyof 
       hoverState={hoverState}
       setHoverState={setHoverState}
       activeClass='bg-green-100 dark:bg-green-900/40'
-      defaultClass=' '
+      defaultClass=''
       borderClass='border-green-300 dark:border-green-700'
       className='flex-1'
       useMouseOver

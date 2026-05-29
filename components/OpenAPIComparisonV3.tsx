@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 
 import { Column, ComparisonBox, HoverBox } from './ComparisonCommon';
-import { AsyncAPIServersSection, OpenAPIServersSection, SpecComponentsSection, SpecInfoSection, TagsAndExternalDocsSection } from './OpenAPIComparisonCommon';
+import {
+  AsyncAPIServersSection,
+  OpenAPIServersSection,
+  SpecComponentsSection,
+  SpecInfoSection,
+  TagsAndExternalDocsSection
+} from './OpenAPIComparisonCommon';
 
 interface HoverState {
   Info: boolean;
@@ -79,7 +85,7 @@ export default function OpenAPIComparisonV3({ className = '' }: OpenAPICompariso
           hoverState={hoverState}
           setHoverState={setHoverState}
           activeClass='bg-yellow-100 dark:bg-yellow-900/40'
-          defaultClass=' '
+          defaultClass=''
           borderClass='border-yellow-300 dark:border-yellow-700'
         >
           <div className='flex flex-1 flex-wrap'>
@@ -160,7 +166,7 @@ export default function OpenAPIComparisonV3({ className = '' }: OpenAPICompariso
           hoverState={hoverState}
           setHoverState={setHoverState}
           activeClass='bg-yellow-100 dark:bg-yellow-900/40'
-          defaultClass=' '
+          defaultClass=''
           borderClass='border-yellow-300 dark:border-yellow-700'
         >
           <div className='flex flex-1 flex-wrap'>

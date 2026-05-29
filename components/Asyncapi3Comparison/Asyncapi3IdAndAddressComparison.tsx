@@ -30,7 +30,7 @@ export default function Asyncapi3IdAndAddressComparison({ className = '' }: Asyn
           hoverState={hoverState}
           setHoverState={setHoverState}
           activeClass='bg-yellow-100 dark:bg-yellow-900/40'
-          defaultClass=' '
+          defaultClass=''
           borderClass='border-yellow-300 dark:border-yellow-700'
         >
           <HoverBox<HoverState>
@@ -52,7 +52,7 @@ export default function Asyncapi3IdAndAddressComparison({ className = '' }: Asyn
           hoverState={hoverState}
           setHoverState={setHoverState}
           activeClass='bg-yellow-100 dark:bg-yellow-900/40'
-          defaultClass=' '
+          defaultClass=''
           borderClass='border-yellow-300 dark:border-yellow-700'
         >
           <HoverBox<HoverState>

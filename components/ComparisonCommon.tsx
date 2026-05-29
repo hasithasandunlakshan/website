@@ -74,6 +74,10 @@ export function HoverBox<T extends { [K in keyof T]: boolean }>({
     <div
       className={`${hovered ? activeClass : defaultClass} m-2 border ${borderClass} p-2 ${className}`}
       data-testid={testId}
+      tabIndex={0}
+      role='button'
+      onFocus={() => setHover(true)}
+      onBlur={() => setHover(false)}
       {...hoverProps}
     >
       {label}
@@ -94,7 +98,7 @@ export const ComparisonBox = ({ children, className = '' }: { children: React.Re
  * Two-column grid wrapper that holds a list of ComponentsGridItem entries.
  */
 export const ComponentsGrid = ({ children }: { children: React.ReactNode }) => (
-  <div className='grid-gap-2 mt-2 grid flex-1 grid-cols-2 flex-wrap'>{children}</div>
+  <div className='gap-2 mt-2 grid flex-1 grid-cols-2 flex-wrap'>{children}</div>
 );
 
 /**
