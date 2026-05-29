@@ -75,7 +75,6 @@ export function HoverBox<T extends { [K in keyof T]: boolean }>({
       className={`${hovered ? activeClass : defaultClass} m-2 border ${borderClass} p-2 ${className}`}
       data-testid={testId}
       tabIndex={0}
-      role='button'
       onFocus={() => setHover(true)}
       onBlur={() => setHover(false)}
       {...hoverProps}
