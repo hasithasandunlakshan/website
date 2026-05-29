@@ -1,4 +1,4 @@
-import { useFloating } from '@floating-ui/react';
+import { flip, offset, shift, useFloating } from '@floating-ui/react';
 import React, { useState } from 'react';
 
 /**
@@ -8,7 +8,8 @@ export default function GoodFirstIssuesTip() {
   const [open, setOpen] = useState(false);
   const { x, y, refs, strategy } = useFloating({
     placement: 'right-start',
-    open
+    open,
+    middleware: [offset(10), flip({ fallbackPlacements: ['bottom-start', 'left-start'] }), shift({ padding: 10 })]
   });
 
   return (
@@ -26,13 +27,14 @@ export default function GoodFirstIssuesTip() {
       {open && (
         <div
           ref={refs.setFloating}
+          className='z-50'
           style={{
             position: strategy,
             top: y ?? '',
             left: x ?? ''
           }}
         >
-          <div className='max-w-xs rounded-xl bg-white dark:bg-dark-card p-5 shadow-2xl dark:shadow-2xl border border-gray-200 dark:border-gray-700'>
+          <div className='max-w-xs rounded-xl bg-white dark:bg-dark-card p-5 shadow-2xl dark:shadow-2xl border border-gray-200 dark:border-gray-700 w-[calc(100vw-2rem)]'>
             <div className='flex items-start gap-3'>
               <div className='flex-shrink-0 w-10 h-10 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center'>
                 <svg
