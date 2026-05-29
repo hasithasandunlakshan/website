@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Column, HoverBox } from '../ComparisonCommon';
+import { Column, ComparisonBox, HoverBox } from '../ComparisonCommon';
 
 export interface HoverState {
   Paths: boolean;
@@ -13,12 +13,16 @@ export interface AsyncAPI3ChannelComparisonProps {
   className?: string;
 }
 
+/**
+ * Static nested box showing the Message structure (Headers + Payload).
+ * Used identically in both the AsyncAPI 2.x and AsyncAPI 3.0 columns.
+ */
 const MessageDetails = () => (
-  <div className='m-2 mr-1 box-border flex-1 border border-black p-2 dark:border-gray-600'>
+  <ComparisonBox className='mr-1 box-border flex-1'>
     Message
-    <div className='m-2 mr-1 box-border flex-1 border border-black p-2 dark:border-gray-600'>Headers</div>
-    <div className='m-2 mr-1 box-border flex-1 border border-black p-2 dark:border-gray-600'>Payload</div>
-  </div>
+    <ComparisonBox className='mr-1 box-border flex-1'>Headers</ComparisonBox>
+    <ComparisonBox className='mr-1 box-border flex-1'>Payload</ComparisonBox>
+  </ComparisonBox>
 );
 
 /**

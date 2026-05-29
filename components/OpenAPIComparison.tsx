@@ -47,6 +47,84 @@ const ASYNCAPI_V2_COMPONENT_NAMES = [
   'Message Bindings'
 ];
 
+interface SharedSectionProps {
+  hoverState: HoverState;
+  setHoverState: React.Dispatch<React.SetStateAction<HoverState>>;
+}
+
+/**
+ * The "Info" hover box that appears at the top of both spec columns.
+ * Hovering on one column highlights the matching box in the other column.
+ */
+const SpecInfoSection = ({ hoverState, setHoverState }: SharedSectionProps) => (
+  <HoverBox<HoverState>
+    label='Info'
+    fieldKey='Info'
+    hoverState={hoverState}
+    setHoverState={setHoverState}
+    activeClass='bg-blue-100 dark:bg-blue-900/40'
+    defaultClass=' '
+    borderClass='border-blue-300 dark:border-blue-700'
+    useMouseOver
+  />
+);
+
+/**
+ * The "Tags" and "External Docs" row that appears at the bottom of both spec columns.
+ * Both boxes share the same hover state so hovering one highlights the other.
+ */
+const TagsAndExternalDocsSection = ({ hoverState, setHoverState }: SharedSectionProps) => (
+  <div className='flex flex-1 flex-wrap'>
+    <HoverBox<HoverState>
+      label='Tags'
+      fieldKey='Tags'
+      hoverState={hoverState}
+      setHoverState={setHoverState}
+      activeClass='bg-pink-300 dark:bg-pink-900/60'
+      defaultClass=' '
+      borderClass='border-black dark:border-gray-600'
+      className='flex flex-1 items-center justify-center'
+      useMouseOver
+    />
+    <HoverBox<HoverState>
+      label='External Docs'
+      fieldKey='External'
+      hoverState={hoverState}
+      setHoverState={setHoverState}
+      activeClass='bg-green-500 dark:bg-green-900/60'
+      defaultClass=' '
+      borderClass='border-black dark:border-gray-600'
+      className='flex flex-1 items-center justify-center'
+      useMouseOver
+    />
+  </div>
+);
+
+interface SpecComponentsSectionProps extends SharedSectionProps {
+  /** List of component names to display in the two-column grid. */
+  componentNames: string[];
+}
+
+/**
+ * The "Components" hover box that wraps a grid of spec component names.
+ * Each column passes its own component name list; hover state is still shared.
+ */
+const SpecComponentsSection = ({ hoverState, setHoverState, componentNames }: SpecComponentsSectionProps) => (
+  <HoverBox<HoverState>
+    label='Components'
+    fieldKey='Components'
+    hoverState={hoverState}
+    setHoverState={setHoverState}
+    activeClass='bg-gray-100 dark:bg-gray-800'
+    defaultClass=' '
+    borderClass='border-black dark:border-gray-600'
+    className='flex-1'
+    useMouseOver
+  >
+    <ComponentsGridList items={componentNames} />
+  </HoverBox>
+);
+
 /**
  * @description React component for comparing OpenAPI 3.0 and AsyncAPI 2.0.
  * @param {string} [props.className=''] - Additional CSS classes for styling.
@@ -68,17 +146,7 @@ export default function OpenAPIComparison({ className = '' }: OpenAPIComparisonP
   return (
     <div className={`${className} flex flex-col flex-wrap gap-1 text-center md:flex-row`}>
       <Column title='OpenAPI 3.0'>
-        <HoverBox<HoverState>
-          label='Info'
-          fieldKey='Info'
-          hoverState={hoverState}
-          setHoverState={setHoverState}
-          activeClass='bg-blue-100 dark:bg-blue-900/40'
-          defaultClass=' '
-          borderClass='border-blue-300 dark:border-blue-700'
-          testId='OpenAPI-sec-info'
-          useMouseOver
-        />
+        <SpecInfoSection hoverState={hoverState} setHoverState={setHoverState} />
         <div className='flex flex-1 flex-wrap'>
           <HoverBox<HoverState>
             label='Servers'
@@ -163,59 +231,16 @@ export default function OpenAPIComparison({ className = '' }: OpenAPIComparisonP
             </HoverBox>
           </div>
         </HoverBox>
-        <div className='flex flex-1 flex-wrap'>
-          <HoverBox<HoverState>
-            label='Tags'
-            fieldKey='Tags'
-            hoverState={hoverState}
-            setHoverState={setHoverState}
-            activeClass='bg-pink-300 dark:bg-pink-900/60'
-            defaultClass=' '
-            borderClass='border-black dark:border-gray-600'
-            className='flex flex-1 items-center justify-center'
-            testId='OpenAPI-tags'
-            useMouseOver
-          />
-          <HoverBox<HoverState>
-            label='External Docs'
-            fieldKey='External'
-            hoverState={hoverState}
-            setHoverState={setHoverState}
-            activeClass='bg-green-500 dark:bg-green-900/60'
-            defaultClass=' '
-            borderClass='border-black dark:border-gray-600'
-            className='flex flex-1 items-center justify-center'
-            testId='OpenAPI-external'
-            useMouseOver
-          />
-        </div>
-        <HoverBox<HoverState>
-          label='Components'
-          fieldKey='Components'
+        <TagsAndExternalDocsSection hoverState={hoverState} setHoverState={setHoverState} />
+        <SpecComponentsSection
           hoverState={hoverState}
           setHoverState={setHoverState}
-          activeClass='bg-gray-100 dark:bg-gray-800'
-          defaultClass=' '
-          borderClass='border-black dark:border-gray-600'
-          className='flex-1'
-          testId='OpenAPI-components'
-          useMouseOver
-        >
-          <ComponentsGridList items={OPENAPI_V2_COMPONENT_NAMES} />
-        </HoverBox>
+          componentNames={OPENAPI_V2_COMPONENT_NAMES}
+        />
       </Column>
 
       <Column title='AsyncAPI 2.0'>
-        <HoverBox<HoverState>
-          label='Info'
-          fieldKey='Info'
-          hoverState={hoverState}
-          setHoverState={setHoverState}
-          activeClass='bg-blue-100 dark:bg-blue-900/40'
-          defaultClass=' '
-          borderClass='border-blue-300 dark:border-blue-700'
-          useMouseOver
-        />
+        <SpecInfoSection hoverState={hoverState} setHoverState={setHoverState} />
         <div className='flex flex-1 flex-wrap'>
           <HoverBox<HoverState>
             label='Servers (hosts + security)'
@@ -296,43 +321,12 @@ export default function OpenAPIComparison({ className = '' }: OpenAPIComparisonP
             Id (application identifier)
           </ComparisonBox>
         </div>
-        <div className='flex flex-1 flex-wrap'>
-          <HoverBox<HoverState>
-            label='Tags'
-            fieldKey='Tags'
-            hoverState={hoverState}
-            setHoverState={setHoverState}
-            activeClass='bg-pink-300 dark:bg-pink-900/60'
-            defaultClass=' '
-            borderClass='border-black dark:border-gray-600'
-            className='flex flex-1 items-center justify-center'
-            useMouseOver
-          />
-          <HoverBox<HoverState>
-            label='External Docs'
-            fieldKey='External'
-            hoverState={hoverState}
-            setHoverState={setHoverState}
-            activeClass='bg-green-500 dark:bg-green-900/60'
-            defaultClass=' '
-            borderClass='border-black dark:border-gray-600'
-            className='flex flex-1 items-center justify-center'
-            useMouseOver
-          />
-        </div>
-        <HoverBox<HoverState>
-          label='Components'
-          fieldKey='Components'
+        <TagsAndExternalDocsSection hoverState={hoverState} setHoverState={setHoverState} />
+        <SpecComponentsSection
           hoverState={hoverState}
           setHoverState={setHoverState}
-          activeClass='bg-gray-100 dark:bg-gray-800'
-          defaultClass=' '
-          borderClass='border-black dark:border-gray-600'
-          className='flex-1'
-          useMouseOver
-        >
-          <ComponentsGridList items={ASYNCAPI_V2_COMPONENT_NAMES} />
-        </HoverBox>
+          componentNames={ASYNCAPI_V2_COMPONENT_NAMES}
+        />
       </Column>
     </div>
   );
