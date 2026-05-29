@@ -20,7 +20,7 @@ export default function Warning({ className = '', title, description }: WarningP
     <div className={`${className} rounded-md bg-yellow-50 dark:bg-yellow-900/30 p-4`} data-testid='Warning-main'>
       <div className='flex'>
         <div className='shrink-0'>
-          <IconExclamation className='size-5 text-yellow-500 dark:text-yellow-400' />
+          <IconExclamation className='size-5 text-gray-900 dark:text-yellow-400' />
         </div>
         <div className='ml-3'>
           <h3
