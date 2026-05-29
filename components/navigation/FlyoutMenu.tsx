@@ -14,7 +14,7 @@ interface FlyoutProps {
 export default function Flyout({ items = [] }: FlyoutProps) {
   return (
     <div
-      className='absolute z-50 bg-white rounded-lg -ml-4 shadow-lg overflow-x-auto
+      className='absolute z-50 rounded-lg -ml-4 shadow-lg overflow-x-auto
         w-screen max-w-md pt-3 md:max-h-[80vh] md:ml-12 md:-translate-x-1/2
         lg:left-1/2 lg:max-w-3xl lg:-translate-x-1/2'
       data-testid='Flyout-main'
