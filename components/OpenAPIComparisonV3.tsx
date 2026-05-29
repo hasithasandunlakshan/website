@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Column, HoverBox } from './ComparisonCommon';
+import { Column, ComparisonBox, ComponentsGridList, HoverBox } from './ComparisonCommon';
 
 interface HoverState {
   Info: boolean;
@@ -21,23 +21,35 @@ interface OpenAPIComparisonV3Props {
   className?: string;
 }
 
-const StaticBox = ({ children, className = '' }: { children: React.ReactNode; className?: string }) => (
-  <div className={`m-2 border border-black p-2 dark:border-gray-600 ${className}`}>{children}</div>
-);
+/** Component entries shown inside the OpenAPI 3.0 Components section (V3 comparison). */
+const OPENAPI_V3_COMPONENT_NAMES = [
+  'Definitions',
+  'Responses',
+  'Parameters',
+  'Response Headers',
+  'Security Definitions',
+  'Callbacks',
+  'Links'
+];
 
-const ComponentGrid = ({ children }: { children: React.ReactNode }) => (
-  <div className='grid-gap-2 mt-2 grid flex-1 grid-cols-2 flex-wrap'>{children}</div>
-);
-
-const ComponentItem = ({ children }: { children: React.ReactNode }) => (
-  <div className='m-2 box-border border border-black bg-gray-100 p-2 dark:border-gray-600 dark:bg-gray-800'>
-    {children}
-  </div>
-);
+/** Component entries shown inside the AsyncAPI 3.0 Components section. */
+const ASYNCAPI_V3_COMPONENT_NAMES = [
+  'Schemas',
+  'Messages',
+  'Security Schemes',
+  'Parameters',
+  'Correlation Ids',
+  'Operation Traits',
+  'Message Traits',
+  'Server Bindings',
+  'Channel Bindings',
+  'Operation Bindings',
+  'Message Bindings'
+];
 
 /**
  * @description OpenAPIComparisonV3 component displays a comparison between OpenAPI 3.0 and AsyncAPI 3.0 specifications.
- * @param {string} [props.className=''] - Additional CSS classes for styling
+ * @param {string} [props.className=''] - Additional CSS classes for styling.
  */
 export default function OpenAPIComparisonV3({ className = '' }: OpenAPIComparisonV3Props) {
   const [hoverState, setHoverState] = useState<HoverState>({
@@ -80,7 +92,7 @@ export default function OpenAPIComparisonV3({ className = '' }: OpenAPICompariso
             className='flex-1'
             useMouseOver
           />
-          <StaticBox className='flex-1 hover:bg-gray-200 dark:hover:bg-gray-800'>Security</StaticBox>
+          <ComparisonBox className='flex-1 hover:bg-gray-200 dark:hover:bg-gray-800'>Security</ComparisonBox>
         </div>
         <HoverBox<HoverState>
           label='Paths'
@@ -187,15 +199,7 @@ export default function OpenAPIComparisonV3({ className = '' }: OpenAPICompariso
           className='flex-1'
           useMouseOver
         >
-          <ComponentGrid>
-            <ComponentItem>Definitions</ComponentItem>
-            <ComponentItem>Responses</ComponentItem>
-            <ComponentItem>Parameters</ComponentItem>
-            <ComponentItem>Response Headers</ComponentItem>
-            <ComponentItem>Security Definitions</ComponentItem>
-            <ComponentItem>Callbacks</ComponentItem>
-            <ComponentItem>Links</ComponentItem>
-          </ComponentGrid>
+          <ComponentsGridList items={OPENAPI_V3_COMPONENT_NAMES} />
         </HoverBox>
       </Column>
 
@@ -263,8 +267,8 @@ export default function OpenAPIComparisonV3({ className = '' }: OpenAPICompariso
                       borderClass='border-red-600 dark:border-red-700'
                       className='flex-1'
                     >
-                      <StaticBox className='box-border flex-1'>Headers</StaticBox>
-                      <StaticBox className='box-border flex-1'>Payload</StaticBox>
+                      <ComparisonBox className='box-border flex-1'>Headers</ComparisonBox>
+                      <ComparisonBox className='box-border flex-1'>Payload</ComparisonBox>
                     </HoverBox>
                   </div>
                 </div>
@@ -326,9 +330,9 @@ export default function OpenAPIComparisonV3({ className = '' }: OpenAPICompariso
           </div>
         </HoverBox>
         <div className='flex flex-1 flex-wrap'>
-          <StaticBox className='box-border flex-1 hover:bg-blue-400 dark:hover:bg-blue-900/50'>
+          <ComparisonBox className='box-border flex-1 hover:bg-blue-400 dark:hover:bg-blue-900/50'>
             Id (application identifier)
-          </StaticBox>
+          </ComparisonBox>
         </div>
         <div className='flex flex-1 flex-wrap'>
           <HoverBox<HoverState>
@@ -365,19 +369,7 @@ export default function OpenAPIComparisonV3({ className = '' }: OpenAPICompariso
           className='flex-1'
           useMouseOver
         >
-          <ComponentGrid>
-            <ComponentItem>Schemas</ComponentItem>
-            <ComponentItem>Messages</ComponentItem>
-            <ComponentItem>Security Schemes</ComponentItem>
-            <ComponentItem>Parameters</ComponentItem>
-            <ComponentItem>Correlation Ids</ComponentItem>
-            <ComponentItem>Operation Traits</ComponentItem>
-            <ComponentItem>Message Traits</ComponentItem>
-            <ComponentItem>Server Bindings</ComponentItem>
-            <ComponentItem>Channel Bindings</ComponentItem>
-            <ComponentItem>Operation Bindings</ComponentItem>
-            <ComponentItem>Message Bindings</ComponentItem>
-          </ComponentGrid>
+          <ComponentsGridList items={ASYNCAPI_V3_COMPONENT_NAMES} />
         </HoverBox>
       </Column>
     </div>
