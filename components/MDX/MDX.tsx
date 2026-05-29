@@ -72,10 +72,17 @@ const MERMAID_THEME_VARIABLES: Record<MermaidTheme, Record<string, string>> = {
     primaryTextColor: '#F8FAFC',
     tertiaryColor: '#121825',
     tertiaryBorderColor: '#475569',
-    lineColor: '#94A3B8'
+    lineColor: '#94A3B8',
+    mainBkg: '#1E293B',
+    secondBkg: '#2E2459',
+    tertiaryBkg: '#121825',
+    clusterBkg: '#121825',
+    clusterBorder: '#475569',
+    edgeLabelBackground: '#1E293B'
   }
 };
 
+// Cache the theme Mermaid was initialized with across client-side page transitions.
 let initializedMermaidTheme: MermaidTheme | null = null;
 
 /**
@@ -102,6 +109,7 @@ function initializeMermaid(theme: MermaidTheme) {
     startOnLoad: false,
     theme: 'base',
     securityLevel: 'strict',
+    // Keep Mermaid styling fully controlled by MERMAID_THEME_VARIABLES.
     themeCSS: '',
     themeVariables: MERMAID_THEME_VARIABLES[theme]
   });
@@ -145,20 +153,30 @@ function MermaidDiagram({ graph }: MermaidDiagramProps) {
    * @description Renders the Mermaid diagram.
    */
   useEffect(() => {
+    let mounted = true;
+
     if (graph) {
       try {
         initializeMermaid(theme);
-        mermaid.mermaidAPI.render(uuid(), graph, (svgGraph) => {
-          setSvg(svgGraph);
+        mermaid.mermaidAPI.render(uuid(), graph.trim(), (svgGraph) => {
+          if (mounted) {
+            setSvg(svgGraph);
+          }
         });
       } catch (e) {
-        setSvg(null);
+        if (mounted) {
+          setSvg(null);
+        }
         // eslint-disable-next-line no-console
         console.error(e);
       }
     } else {
       setSvg(null);
     }
+
+    return () => {
+      mounted = false;
+    };
   }, [graph, theme]);
 
   return <div dangerouslySetInnerHTML={{ __html: svg || '' }} />;
