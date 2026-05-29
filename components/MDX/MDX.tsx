@@ -321,6 +321,12 @@ const getMDXComponents = (reactId: string) => ({
       className={`${props.className || ''} my-3 font-body font-regular tracking-tight dark:text-white text-gray-700 antialiased`}
     />
   ),
+  summary: (props: React.HTMLProps<HTMLElement>) => (
+    <summary
+      {...props}
+      className={`${props.className || ''} dark:text-white`}
+    />
+  ),
   button: Button as React.ComponentType<React.ButtonHTMLAttributes<HTMLButtonElement>>,
   table: (props: React.HTMLProps<HTMLTableElement>) => (
     <div className={`${props.className || ''} flex flex-col`}>
