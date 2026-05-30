@@ -49,15 +49,17 @@ export default function ToolsCard({ toolData }: ToolsCardProp) {
   });
 
   return (
-    <div className='flex h-auto flex-col rounded-xl border border-gray-200 dark:border-gray-700 shadow-md dark:shadow-xl bg-white dark:bg-dark-card hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] hover:border-gray-300 dark:hover:border-gray-600 overflow-hidden'>
+    <div className='relative z-0 flex h-auto flex-col overflow-visible rounded-xl border border-gray-200 bg-white shadow-md transition-all duration-300 hover:z-30 hover:scale-[1.02] hover:border-gray-300 hover:shadow-xl dark:border-gray-700 dark:bg-dark-card dark:shadow-xl dark:hover:border-gray-600 dark:hover:shadow-2xl'>
       <div className='mb-6 px-6 pt-8'>
         <div className='flex flex-col gap-2'>
-          <div className='flex w-full justify-between gap-4'>
-            <Heading typeStyle={HeadingTypeStyle.smSemibold} className='dark:text-white'>
+          <div className='grid w-full grid-cols-[minmax(0,1fr)_auto] items-start gap-3'>
+            <Heading typeStyle={HeadingTypeStyle.smSemibold} className='min-w-0 break-words dark:text-white'>
               {toolData.title}
             </Heading>
             <div
-              className='size-fit min-w-[5.3rem] rounded-lg border border-green-600 dark:border-green-500 bg-green-100 dark:bg-green-900/30 p-1 text-center text-xs text-green-700 dark:text-green-400 font-semibold shadow-sm'
+              className='size-fit max-w-full whitespace-nowrap rounded-lg border border-green-600
+                bg-green-100 px-2 py-1 text-center text-xs font-semibold text-green-700 shadow-sm
+                dark:border-green-500 dark:bg-green-900/30 dark:text-green-400'
               onMouseEnter={() =>
                 setTimeout(() => {
                   if (!visible.desc) setVisible({ ...visible, desc: true });
@@ -74,7 +76,11 @@ export default function ToolsCard({ toolData }: ToolsCardProp) {
               >
                 {toolData.filters?.hasCommercial === false ? 'Open Source' : 'Commercial'}
                 {visible.desc && (
-                  <span className='absolute -left-2/3 top-8 z-10 w-48 -translate-x-12 rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-dark-card px-3 py-2 text-left text-gray-700 dark:text-gray-300 shadow-lg text-xs'>
+                  <span
+                    className='absolute right-0 top-8 z-50 w-56 whitespace-normal break-words rounded-lg border
+                    border-gray-200 bg-white px-3 py-2 text-left text-xs leading-5 text-gray-700 shadow-xl
+                    dark:border-gray-600 dark:bg-dark-card dark:text-gray-300 dark:shadow-2xl'
+                  >
                     {Data.properties.filters.properties.hasCommercial.description}
                   </span>
                 )}

@@ -155,7 +155,10 @@ export default function Filters({ setOpenFilter }: FiltersProps) {
             <button
               type='button'
               className={twMerge(
-                `bg-gray-200 dark:bg-gray-700 px-4 py-2 flex gap-1 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-900/50 border hover:border-secondary-500 dark:hover:border-secondary-400 cursor-pointer transition-all dark:text-gray-300 ${checkPaid === 'free' ? 'bg-secondary-100 dark:bg-secondary-900/50 border-secondary-500 dark:border-secondary-400' : ''}`
+                `bg-white dark:bg-dark-background px-4 py-2 flex gap-1 rounded-md border border-gray-300
+                dark:border-gray-600 hover:bg-secondary-100 dark:hover:bg-secondary-600/20 hover:border-secondary-500
+                dark:hover:border-secondary-400 cursor-pointer transition-all text-gray-700 dark:text-gray-300
+                ${checkPaid === 'free' ? 'bg-secondary-100 dark:bg-secondary-600/25 border-secondary-500 dark:border-secondary-400 text-gray-900 dark:text-white' : ''}`
               )}
               onClick={() => (checkPaid === 'free' ? setCheckPaid('all') : setCheckPaid('free'))}
             >
@@ -164,7 +167,10 @@ export default function Filters({ setOpenFilter }: FiltersProps) {
             </button>
             <button
               type='button'
-              className={`flex cursor-pointer gap-1 rounded-md border bg-gray-200 dark:bg-gray-700 px-4 py-2 hover:border-secondary-500 dark:hover:border-secondary-400 hover:bg-secondary-100 dark:hover:bg-secondary-900/50 transition-all dark:text-gray-300 ${checkPaid === 'paid' ? 'border-secondary-500 dark:border-secondary-400 bg-secondary-100 dark:bg-secondary-900/50' : ''}`}
+              className={`flex cursor-pointer gap-1 rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700
+                transition-all hover:border-secondary-500 hover:bg-secondary-100 dark:border-gray-600
+                dark:bg-dark-background dark:text-gray-300 dark:hover:border-secondary-400
+                dark:hover:bg-secondary-600/20 ${checkPaid === 'paid' ? 'border-secondary-500 bg-secondary-100 text-gray-900 dark:border-secondary-400 dark:bg-secondary-600/25 dark:text-white' : ''}`}
               onClick={() => (checkPaid === 'paid' ? setCheckPaid('all') : setCheckPaid('paid'))}
             >
               <span className='text-sm'>Commercial</span>
@@ -204,7 +210,9 @@ export default function Filters({ setOpenFilter }: FiltersProps) {
             <button
               type='button'
               className={twMerge(
-                `px-4 py-2 flex justify-between rounded-lg border border-gray-400 dark:border-gray-600 w-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 shadow text-sm cursor-pointer transition-all ${openedFiltersDropown === OpenedFiltersDropdownType.LANGUAGE ? 'rounded-b-none' : ''}`
+                `px-4 py-2 flex justify-between rounded-lg border border-gray-400 dark:border-gray-600 w-full bg-white
+                dark:bg-dark-background text-gray-700 dark:text-gray-300 shadow text-sm cursor-pointer transition-all
+                hover:border-gray-500 dark:hover:border-gray-500 ${openedFiltersDropown === OpenedFiltersDropdownType.LANGUAGE ? 'rounded-b-none border-secondary-500 dark:border-secondary-400' : ''}`
               )}
               onClick={() => toggleDropdown(OpenedFiltersDropdownType.LANGUAGE)}
             >
@@ -221,7 +229,7 @@ export default function Filters({ setOpenFilter }: FiltersProps) {
               />
             </button>
             {openedFiltersDropown === OpenedFiltersDropdownType.LANGUAGE && (
-              <div className='w-auto overflow-x-auto rounded-b-lg border border-gray-400 dark:border-gray-600 bg-gray-200 dark:bg-gray-700 duration-150'>
+              <div className='w-auto overflow-x-auto rounded-b-lg border border-gray-400 bg-white duration-150 dark:border-gray-600 dark:bg-dark-card'>
                 <FiltersDropdown
                   dataList={languageList}
                   checkedOptions={checkedLanguage}
@@ -247,7 +255,9 @@ export default function Filters({ setOpenFilter }: FiltersProps) {
             <button
               type='button'
               className={twMerge(
-                `px-4 py-2 flex justify-between rounded-lg border border-gray-400 dark:border-gray-600 w-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 shadow text-sm cursor-pointer transition-all ${openedFiltersDropown === OpenedFiltersDropdownType.TECHNOLOGY ? 'rounded-b-none' : ''}`
+                `px-4 py-2 flex justify-between rounded-lg border border-gray-400 dark:border-gray-600 w-full bg-white
+                dark:bg-dark-background text-gray-700 dark:text-gray-300 shadow text-sm cursor-pointer transition-all
+                hover:border-gray-500 dark:hover:border-gray-500 ${openedFiltersDropown === OpenedFiltersDropdownType.TECHNOLOGY ? 'rounded-b-none border-secondary-500 dark:border-secondary-400' : ''}`
               )}
               onClick={() => toggleDropdown(OpenedFiltersDropdownType.TECHNOLOGY)}
             >
@@ -264,7 +274,7 @@ export default function Filters({ setOpenFilter }: FiltersProps) {
               />
             </button>
             {openedFiltersDropown === OpenedFiltersDropdownType.TECHNOLOGY && (
-              <div className='w-auto overflow-x-auto rounded-b-lg border border-gray-400 dark:border-gray-600 bg-gray-200 dark:bg-gray-700 duration-150'>
+              <div className='w-auto overflow-x-auto rounded-b-lg border border-gray-400 bg-white duration-150 dark:border-gray-600 dark:bg-dark-card'>
                 <FiltersDropdown
                   dataList={technologyList}
                   checkedOptions={checkedTechnology}
@@ -290,7 +300,9 @@ export default function Filters({ setOpenFilter }: FiltersProps) {
             <button
               type='button'
               className={twMerge(
-                `px-4 py-2 flex justify-between rounded-lg border border-gray-400 dark:border-gray-600 w-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 shadow text-sm cursor-pointer transition-all ${openedFiltersDropown === OpenedFiltersDropdownType.CATEGORY ? 'rounded-b-none' : ''}`
+                `px-4 py-2 flex justify-between rounded-lg border border-gray-400 dark:border-gray-600 w-full bg-white
+                dark:bg-dark-background text-gray-700 dark:text-gray-300 shadow text-sm cursor-pointer transition-all
+                hover:border-gray-500 dark:hover:border-gray-500 ${openedFiltersDropown === OpenedFiltersDropdownType.CATEGORY ? 'rounded-b-none border-secondary-500 dark:border-secondary-400' : ''}`
               )}
               onClick={() => toggleDropdown(OpenedFiltersDropdownType.CATEGORY)}
             >
@@ -307,7 +319,7 @@ export default function Filters({ setOpenFilter }: FiltersProps) {
               />
             </button>
             {openedFiltersDropown === OpenedFiltersDropdownType.CATEGORY && (
-              <div className='w-auto overflow-x-auto rounded-b-lg border border-gray-400 dark:border-gray-600 bg-gray-200 dark:bg-gray-700 duration-150'>
+              <div className='w-auto overflow-x-auto rounded-b-lg border border-gray-400 bg-white duration-150 dark:border-gray-600 dark:bg-dark-card'>
                 <FiltersDropdown
                   dataList={categoryList}
                   checkedOptions={checkedCategory}
