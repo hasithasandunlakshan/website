@@ -26,7 +26,7 @@ export default function FiltersDropdown({
   setCheckedOptions,
   className = ''
 }: FiltersDropdownProps) {
-  const handleClickOption = (event: React.MouseEvent<HTMLDivElement, MouseEvent>, option: string) => {
+  const handleClickOption = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, option: string) => {
     const isChecked = checkedOptions.includes(option);
     const updatedOptions = isChecked ? checkedOptions.filter((item) => item !== option) : [...checkedOptions, option];
 
@@ -44,10 +44,12 @@ export default function FiltersDropdown({
         const checked = checkedOptions.includes(data.name);
 
         return (
-          <div
+          <button
             key={index}
+            type='button'
             className={twMerge(
-              `group flex cursor-pointer items-start gap-2 p-2 text-gray-700 transition-colors hover:bg-gray-100
+              `group flex w-full cursor-pointer items-start gap-2 p-2 text-left text-gray-700
+              transition-colors hover:bg-gray-100
               dark:text-gray-200 dark:hover:bg-gray-100 dark:hover:text-gray-900
               ${checked ? 'bg-secondary-100 text-gray-900 dark:!bg-gray-100 dark:!text-gray-900' : ''}`
             )}
@@ -63,7 +65,7 @@ export default function FiltersDropdown({
               />
             )}
             <div className='mb-px text-xs'>{data.name}</div>
-          </div>
+          </button>
         );
       })}
     </div>
