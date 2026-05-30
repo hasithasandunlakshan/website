@@ -11,14 +11,14 @@ const Toggle = ({
   setChecked,
   label,
   bgColor = 'bg-gray-200',
-  checkedStateBgColor = 'bg-secondary-500',
+  checkedStateBgColor = 'bg-secondary-500'
 }: ToggleProps) => {
   return (
-    <label className="relative inline-flex cursor-pointer items-center">
+    <label className='relative inline-flex cursor-pointer items-center'>
       <input
-        type="checkbox"
+        type='checkbox'
         value={checked ? 'true' : 'false'}
-        className="peer sr-only"
+        className='peer sr-only'
         onChange={() => setChecked(!checked)}
       />
       <div
@@ -30,14 +30,10 @@ const Toggle = ({
           dark:after:bg-gray-200`,
           bgColor,
           checked &&
-            `after:translate-x-full after:border-white ${checkedStateBgColor} dark:bg-secondary-600 dark:ring-secondary-400/60`,
+            `after:translate-x-full after:border-white ${checkedStateBgColor} dark:bg-secondary-600 dark:ring-secondary-400/60`
         )}
       ></div>
-      {label && (
-        <div className="ml-2 text-sm font-medium text-gray-700 dark:text-gray-300">
-          {label}
-        </div>
-      )}
+      {label && <div className='ml-2 text-sm font-medium text-gray-700 dark:text-gray-300'>{label}</div>}
     </label>
   );
 };
